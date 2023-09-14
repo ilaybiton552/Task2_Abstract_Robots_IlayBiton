@@ -12,11 +12,11 @@ namespace Robots_inc
 		private DateTime creationDate;
 		private double batteryStatus; 
 
-		public RobotSpy(string model, DateTime creationDate, double batteryStatus)
+		public RobotSpy(string model)
 		{
 			this.model = model;
-			this.creationDate = creationDate;
-			this.batteryStatus = batteryStatus;
+			this.creationDate = DateTime.Now;
+			this.batteryStatus = 100;
 		}
 		public string GetModel() { 	return this.model; }
 		public DateTime GetDateTime() { return this.creationDate; }

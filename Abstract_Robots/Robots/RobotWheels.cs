@@ -8,27 +8,43 @@ namespace Robots_inc
 {
     public class RobotWheels : RobotSpy
     {
-        //1. עדכנו את הפעולה הבונה כך שתתאים לפעולת במחלקת העל
-        public RobotWheels() : base("Spyke") { } 
+        private int rightDir;
+        private int leftDir;
+        public RobotWheels() : base("Spyke") 
+        {
+            rightDir = leftDir = 0;
+        } 
 
         public override void MoveForward()
         {
             this.TurnWheels(1, 1);
         }
+
+        public override void MoveBackward()
+        {
+            TurnWheels(-1, -1);
+        }
+
         public override void TurnRight()
         {
             this.TurnWheels(-1, 0);
         }
-        //השלימו את הפעולות החסרות מתוך המצגת או על הבנתכם
+
+        public override void TurnLeft()
+        {
+            TurnWheels(0, -1);
+        }
 
         private void TurnWheels(int rightDir, int leftDir)
         {
-            //2. הוסיפו התייחסות לסוללה
+            SetBatteryStatus(GetBatteryStatus() - 4.5);
+            this.rightDir += rightDir;
+            this.leftDir += leftDir;
         }
 
         public void WaveHands()
-        { 
-            //3. הוסיפו התייחסות לסוללה 
+        {
+            SetBatteryStatus(GetBatteryStatus() - 2);
         }
 
     }
