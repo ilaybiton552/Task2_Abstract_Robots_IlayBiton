@@ -16,17 +16,21 @@ namespace Robots_inc
 
         public Worker(string name, string id, DateTime bDate, string pass)
         {
-            //משימה 1
-            //השלימו את הבנאי המקבל הפרמטרים הנחוצים ליצירת עובד חדש
+            fullName = name;
+            idNumber = id;
+            birthDate = bDate;
+            password = pass;
         }
-        //משימה 2
-        //get כתבו פעולות מאחזרות 
 
-        //משימה 3
-        //רק לתכונות שניתן לשנות - set כתבו פעולות מעדכנות
+        public string GetFullName() { return fullName; }
+        public string GetIdNumber() { return idNumber; }
+        public DateTime GetBirthDate() { return birthDate; }
+        public string GetPassword() { return password; }
 
-        //משימה 4
-        // כתבו חתימה פעולה אבסטרקטית לחישוב שכר
+        public void SetFullName(string name) { fullName = name; }
+        public void SetPassword(string pass) { password = pass; }
+
+        public abstract double CalcIncome();
 
         public override string ToString()
         {
