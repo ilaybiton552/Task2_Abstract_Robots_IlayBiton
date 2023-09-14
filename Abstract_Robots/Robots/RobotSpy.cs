@@ -28,7 +28,13 @@ namespace Robots_inc
 		public abstract void TurnLeft();
 		public abstract void TurnRight();
 
-		public void TakePicture() { } //4. הוסיפו התייחסות למצב סוללה
-		public void ChargeBattery() { } //5. עדכנו את מצב הסוללה ל-100
+		public void TakePicture() 
+		{
+			batteryStatus -= 5;
+		}
+		public void ChargeBattery()
+		{
+			batteryStatus = 100;
+		}
 	}
 }
