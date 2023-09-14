@@ -13,9 +13,11 @@ namespace Robots_inc
 		private double batteryStatus; 
 
 		//1. עדכנו את הפעולה הבונה כך שתקבל פרמטרים בהתאם לתכונות
-		public RobotSpy(string model)
+		public RobotSpy(string model, DateTime creationDate, double batteryStatus)
 		{
 			this.model = model;
+			this.creationDate = creationDate;
+			this.batteryStatus = batteryStatus;
 		}
 		public string GetModel() { 	return this.model; }
 
