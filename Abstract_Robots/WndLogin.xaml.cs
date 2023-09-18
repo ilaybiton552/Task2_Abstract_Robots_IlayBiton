@@ -49,11 +49,11 @@ namespace Robots_inc
             List<Worker> workers = new List<Worker>
             {
                 new GeneralManager("Karl", "045212415", DateTime.Today, "Karl1234", 20000, 40),
-                new OperationManager("Mike", "643212471", DateTime.Today, "Karl1234", 23.5, 45, 10),
-                new OperationManager("Ronald", "075312415", DateTime.Today, "Karl1234", 25, 40, 2),
-                new OperationalWorker("Mickie", "045543415", DateTime.Today, "Karl1234", 20, 40),
-                new OperationalWorker("Seon", "045428635", DateTime.Today, "Karl1234", 30, 20),
-                new OperationalWorker("Sinus", "045212236", DateTime.Today, "Karl1234", 29.99, 35)
+                new OperationManager("Mike", "643212471", DateTime.Today, "Mike1234", 23.5, 45, 10),
+                new OperationManager("Ronald", "075312415", DateTime.Today, "Ron1234", 25, 40, 2),
+                new OperationalWorker("Mickie", "045543415", DateTime.Today, "M1234", 20, 40),
+                new OperationalWorker("Seon", "045428635", DateTime.Today, "Se1234", 30, 20),
+                new OperationalWorker("Sinus", "045212236", DateTime.Today, "Sinus1234", 29.99, 35)
             };
             return workers;
         }
@@ -82,7 +82,7 @@ namespace Robots_inc
         //כתבו פעולה המחזירה אוסף של 5 משימות
         //כתבו זימון לפעולה שכתבתם בפעולה הבונה של החלון       
 
-        public List<Mission> CreateMissions()
+        private List<Mission> CreateMissions()
         {
             List<Mission> missions = new List<Mission>()
             {
@@ -101,11 +101,17 @@ namespace Robots_inc
         //WndMain אם כן, יש ליצור מופע של חלון 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            //...אם מספר הזיהוי והסיסמה תואמים לעובד ברשימה, אז
-            Worker worker = workers[?];
-            WndMain main = new WndMain(worker, activeMissions, activeRobots, workers);
-            main.ShowDialog();
-
+            foreach (Worker worker in workers)
+            {
+                if (worker.GetIdNumber().Equals(tbxID.Text) && worker.GetPassword().Equals(tbxPassword.Password.ToString()))
+                {
+                    WndMain main = new WndMain(worker, activeMissions, activeRobots, workers);
+                    Close();
+                    main.ShowDialog();
+                    return;
+                }
+            }
+            MessageBox.Show("Worker Not Found", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }
