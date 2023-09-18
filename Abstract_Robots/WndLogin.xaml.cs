@@ -27,6 +27,9 @@ namespace Robots_inc
         public MainWindow()
         {
             InitializeComponent();
+            workers = CreateWorkers();
+            activeRobots = CreateRobots();
+            activeMissions = CreateMissions();
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -41,13 +44,56 @@ namespace Robots_inc
         //מנכ"ל אחד, 2 מנהלי תפעול ו-3 עובדי תפעול
         //כתבו זימון לפעולה שכתבתם בפעולה הבונה של החלון
 
+        private List<Worker> CreateWorkers()
+        {
+            List<Worker> workers = new List<Worker>
+            {
+                new GeneralManager("Karl", "045212415", DateTime.Today, "Karl1234", 20000, 40),
+                new OperationManager("Mike", "643212471", DateTime.Today, "Karl1234", 23.5, 45, 10),
+                new OperationManager("Ronald", "075312415", DateTime.Today, "Karl1234", 25, 40, 2),
+                new OperationalWorker("Mickie", "045543415", DateTime.Today, "Karl1234", 20, 40),
+                new OperationalWorker("Seon", "045428635", DateTime.Today, "Karl1234", 30, 20),
+                new OperationalWorker("Sinus", "045212236", DateTime.Today, "Karl1234", 29.99, 35)
+            };
+            return workers;
+        }
+
         //משימה 2
         //כתבו פעולה המחזירה אוסף של 8 רובוטים
         //כתבו זימון לפעולה שכתבתם בפעולה הבונה של החלון
 
+        private List<RobotSpy> CreateRobots()
+        {
+            List<RobotSpy> robots = new List<RobotSpy>()
+            {
+                new RobotFly(),
+                new RobotFly(),
+                new RobotFly(),
+                new RobotQuad(),
+                new RobotQuad(),
+                new RobotQuad(),
+                new RobotWheels(),
+                new RobotWheels()
+            };
+            return robots;
+        }
+
         //משימה 3
         //כתבו פעולה המחזירה אוסף של 5 משימות
         //כתבו זימון לפעולה שכתבתם בפעולה הבונה של החלון       
+
+        public List<Mission> CreateMissions()
+        {
+            List<Mission> missions = new List<Mission>()
+            {
+                new Mission(DateTime.Now, "Create robot"),
+                new Mission(DateTime.Now, "Remove robot"),
+                new Mission(DateTime.Now, "Upgrade robot"),
+                new Mission(DateTime.Now, "Save robot"),
+                new Mission(DateTime.Now, "Make icecream"),
+            };
+            return missions;
+        }
 
         //משימה 4
         //login כתבו פעולה המגיבה לללחיצה על כפתור 
