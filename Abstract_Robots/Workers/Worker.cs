@@ -26,6 +26,9 @@ namespace Robots_inc
         public string GetIdNumber() { return idNumber; }
         public DateTime GetBirthDate() { return birthDate; }
         public string GetPassword() { return password; }
+        public string FullName { get { return fullName; } set { fullName = value; } }
+        public string IdNumber { get { return idNumber; } }
+        public DateTime BirthDate { get { return birthDate; } }
 
         public void SetFullName(string name) { fullName = name; }
         public void SetPassword(string pass) { password = pass; }

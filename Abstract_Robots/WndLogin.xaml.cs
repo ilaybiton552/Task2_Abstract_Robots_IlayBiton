@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,14 +47,17 @@ namespace Robots_inc
 
         private List<Worker> CreateWorkers()
         {
+            DateTime start = new DateTime(1970, 1, 1);
+            Random rnd = new Random();
+            int range = (DateTime.Today - start).Days;
             List<Worker> workers = new List<Worker>
             {
-                new GeneralManager("Karl", "045212415", DateTime.Today, "Karl1234", 20000, 40),
-                new OperationManager("Mike", "643212471", DateTime.Today, "Mike1234", 23.5, 45, 10),
-                new OperationManager("Ronald", "075312415", DateTime.Today, "Ron1234", 25, 40, 2),
-                new OperationalWorker("Mickie", "045543415", DateTime.Today, "M1234", 20, 40),
-                new OperationalWorker("Seon", "045428635", DateTime.Today, "Se1234", 30, 20),
-                new OperationalWorker("Sinus", "045212236", DateTime.Today, "Sinus1234", 29.99, 35)
+                new GeneralManager("Karl", "123", start.AddDays(rnd.Next(range)), "123", 20000, 40),
+                new OperationManager("Mike", "643212471", start.AddDays(rnd.Next(range)), "Mike1234", 23.5, 45, 10),
+                new OperationManager("Ronald", "075312415", start.AddDays(rnd.Next(range)), "Ron1234", 25, 40, 2),
+                new OperationalWorker("Mickie", "045543415", start.AddDays(rnd.Next(range)), "M1234", 20, 40),
+                new OperationalWorker("Seon", "045428635", start.AddDays(rnd.Next(range)), "Se1234", 30, 20),
+                new OperationalWorker("Sinus", "045212236", start.AddDays(rnd.Next(range)), "Sinus1234", 29.99, 35)
             };
             return workers;
         }
